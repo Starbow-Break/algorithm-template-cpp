@@ -61,7 +61,7 @@ bool spfa(int start, int finish) {
 //---------------------------SPFA---------------------------
 
 //---------------------------MCMF---------------------------
-pii mcmf(int source = 801, int sink = 802) {
+pii mcmf(int source, int sink) {
     int totFlow = 0, totCost = 0;
 
     while(spfa(source, sink)) {
