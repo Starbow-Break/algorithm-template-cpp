@@ -45,26 +45,13 @@ void lazy(node *cur) {
     cur->inv = false;
     
     //lazy 전파
-    if(cur->l != NULL) cur->l->inv = !cur->l->inv;
-    if(cur->r != NULL) cur->r->inv = !cur->r->inv;
+    if(cur->l) cur->l->inv = !cur->l->inv;
+    if(cur->r) cur->r->inv = !cur->r->inv;
 }
 
 //cur 노드를 업데이트
 void update(node *cur) {
-    cur->cnt = 1; cur->sum = cur->value;
-    cur->minV = cur->maxV = cur->value;
-    if(cur->l != NULL) {
-        cur->cnt += cur->l->cnt;
-        cur->minV = min(cur->minV, cur->l->minV);
-        cur->maxV = max(cur->maxV, cur->l->maxV);
-        cur->sum += cur->l->sum;
-    }
-    if(cur->r != NULL) {
-        cur->cnt += cur->r->cnt;
-        cur->minV = min(cur->minV, cur->r->minV);
-        cur->maxV = max(cur->maxV, cur->r->maxV);
-        cur->sum += cur->r->sum;
-    }
+    /*노드 업데이트 시 해야할 작업*/
 }
 
 //Rotate 연산
@@ -82,9 +69,9 @@ void rotate(node *cur) {
     
     cur->p = p->p;
     p->p = cur;
-    if(temp != NULL) temp->p = p;
+    if(temp) temp->p = p;
     
-    if(cur->p != NULL) {
+    if(cur->p) {
         if(p == cur->p->l) cur->p->l = cur;
         else cur->p->r = cur;
     }
@@ -99,7 +86,7 @@ void splay(node *cur) {
     //cur이 root 노드가 될 때까지 반복
     while(cur->p) {
         node *p = cur->p, *g = p->p;
-        if(g != NULL) {
+        if(g) {
             //Zig-Zig Step
             if((cur == p->l && p == g->l) || (cur == p->r && p == g->r)) rotate(p);
             else rotate(cur); //Zig-Zag Step
@@ -120,10 +107,10 @@ void findKth(int k) {
     
     //k번째 원소를 찾아 이동한다.
     while(1) {
-        while(cur->l != NULL && cur->l->cnt > k) {
+        while(cur->l && cur->l->cnt > k) {
             cur = cur->l; lazy(cur);
         }
-        if(cur->l != NULL) k -= cur->l->cnt;
+        if(cur->l) k -= cur->l->cnt;
         if(!k) break;
         k--;
         cur = cur->r;
