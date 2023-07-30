@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
-#define repeat(i, s, e) for(int i = s; i < e; i++)
+#define fi first
+#define se second
+#define repeat(n) for(int i = 0; i < n; i++)
+#define FOR(i, a, b) for(int i = (a); i < (b); i++)
+#define push_back pb
 #define all(vec) vec.begin(), vec.end()
 #define rall(vec) vec.rbegin(), vec.rend()
 #define compress(vec) sort(all(vec)); vec.erase(unique(all(vec)), vec.end());
@@ -16,7 +20,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL); cout.tie(NULL);
     
-    
+
     
     return 0;
 }
