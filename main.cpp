@@ -3,7 +3,7 @@
 #define se second
 #define repeat(n) for(int i = 0; i < n; i++)
 #define FOR(i, a, b) for(int i = (a); i < (b); i++)
-#define push_back pb
+#define pb push_back 
 #define all(vec) vec.begin(), vec.end()
 #define rall(vec) vec.rbegin(), vec.rend()
 #define compress(vec) sort(all(vec)); vec.erase(unique(all(vec)), vec.end());
